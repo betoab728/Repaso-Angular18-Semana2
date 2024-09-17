@@ -1,1 +1,154 @@
-<p>editar-alumno works!</p>
+<div class="p-4 max-w-md mx-auto">
+    <h2 class="text-xl font-semibold m-4">Nuevo Alumno</h2>
+    <form class="p-4 " (ngSubmit)="updateAlumno()">
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">
+          Nombre
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="nombre"
+          type="text"
+          placeholder="Nombre"
+          [(ngModel)]="alumno.nombre"
+          name="nombre"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2"
+         for="apellidoPaterno">
+          Apellido Paterno
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="apellidoPaterno"
+          type="text"
+          placeholder="Apellido Paterno"
+          [(ngModel)]="alumno.apellidoPaterno"
+          name="apellidoPaterno"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="apellidoMaterno">
+          Apellido Materno
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="apellidoMaterno"
+          type="text"
+          placeholder="Apellido Materno"
+          [(ngModel)]="alumno.apellidoMaterno"
+          name="apellidoMaterno"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="sexo">
+          Sexo
+        </label>
+        <select
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="sexo"
+          [(ngModel)]="alumno.sexo"
+          name="sexo"
+          required
+        >
+          <option value="" disabled selected>Seleccione Sexo</option>
+          <option value="m">Masculino</option>
+          <option value="f">Femenino</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">
+          Dirección
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="direccion"
+          type="text"
+          placeholder="Dirección"
+          [(ngModel)]="alumno.direccion"
+          name="direccion"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="correo">
+          Correo
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="correo"
+          type="email"
+          placeholder="Correo Electrónico"
+          [(ngModel)]="alumno.correo"
+          name="correo"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="telefono">
+          Teléfono
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="telefono"
+          type="text"
+          placeholder="Teléfono"
+          [(ngModel)]="alumno.telefono"
+          name="telefono"
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="fechaNacimiento">
+          Fecha de Nacimiento
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="fechaNacimiento"
+          type="date"
+          [(ngModel)]="alumno.fechaNacimiento"
+          name="fechaNacimiento"
+        />
+      </div>
+     
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="estado">
+            Estado
+        </label>
+        <select
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="estado"
+          [(ngModel)]="alumno.estado"
+          name="estado"
+          required
+        >
+          <option value="" disabled selected>Seleccione Sexo</option>
+          <option value="a">Activo</option>
+          <option value="i">Inactivo</option>
+        </select>
+      </div>
+      
+      <div class="flex items-center justify-between">
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Guardar
+        </button>
+
+        <button
+          type="button"
+          (click)="cancelar()"
+          class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Cancelar
+        </button>
+        
+
+      </div>
+    </form>
+  </div>
+  
+
+

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild, ElementRef } from '@angular/core';
 import { Alumno } from '../../models/alumno.model';
 import { AlumnosService } from '../../services/alumnos.service';
 import { Router } from '@angular/router';
@@ -15,9 +15,49 @@ import Swal from 'sweetalert2';
 
 export class NuevoAlumnoComponent {
 
+  @ViewChild('nombreInput') nombreInputRef!: ElementRef;
+ 
+
  alumno: Alumno = { idalumno:0,nombre:'',apellidoPaterno:'',apellidoMaterno:'', sexo:'',direccion:'',correo:'',telefono:'',fechaNacimiento:new Date(),estado:''};
 
+ ngAfterViewInit() {
+  // Enfocar el campo de nombre automáticamente al cargar el componente
+  this.nombreInputRef.nativeElement.focus();
+}
+
+ // Variable para detectar si el formulario ha sido modificado
+ formDirty: boolean = false;
+
   constructor(private alumnosService: AlumnosService, private router: Router) { }
+
+   // Detecta cualquier cambio en el formulario
+   onInputChange() {
+    this.formDirty = true;
+  }
+
+   // Método que será llamado por el guard CanDeactivate
+   canDeactivate(): boolean | Promise<boolean> {
+    if (this.formDirty) {
+      return this.showConfirmationModal();
+    }
+    return true;
+  }
+
+   // Método para mostrar el modal de confirmación usando SweetAlert
+    async showConfirmationModal(): Promise<boolean> {
+    return Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Tienes cambios sin guardar. ¿Realmente deseas salir?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, salir',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      return result.isConfirmed;  // Devuelve true si el usuario confirma, o false si cancela
+    });
+  }
 
   guardarAlumno(): void {
   
