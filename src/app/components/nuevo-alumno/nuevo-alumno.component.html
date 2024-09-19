@@ -5,7 +5,8 @@
       <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">
         Nombre
       </label>
-      <input
+      <input 
+      #nombreInput
         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id="nombre"
         type="text"
@@ -15,8 +16,9 @@
         name="nombre"
         required
       />
+      <p>Nombre capitalizado: {{ alumno.nombre | capitalizar }}</p> <!-- Usando el pipe -->
     </div>
-    <div class="mb-4">
+    <div class="mb-4" appMiDirectiva>
       <label class="block text-gray-700 text-sm font-bold mb-2" for="apellidoPaterno">
         Apellido Paterno
       </label>
@@ -25,7 +27,7 @@
         id="apellidoPaterno"
         type="text"
         placeholder="Apellido Paterno"
-        [(ngModel)]="alumno.apellidoPaterno"
+        [(ngModel)]="alumno.apellidoPaterno"      
         (ngModelChange)="onInputChange()"
         name="apellidoPaterno"
         required

@@ -3,27 +3,30 @@ import { Alumno } from '../../models/alumno.model';
 import { AlumnosService } from '../../services/alumnos.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CapitalizarPipe } from '../../pipes/capitalizar.pipe';
+import { MiDirectivaDirective } from '../../directivas/mi-directiva.directive';
 import Swal from 'sweetalert2';  
 
 @Component({
   selector: 'app-nuevo-alumno',
   standalone: true,
-  imports: [ FormsModule ],
+  imports: [ FormsModule ,CapitalizarPipe,MiDirectivaDirective],
   templateUrl: './nuevo-alumno.component.html',
   styleUrl: './nuevo-alumno.component.css'
 })
 
 export class NuevoAlumnoComponent {
 
+  alumno: Alumno = { idalumno:0,nombre:'',apellidoPaterno:'',apellidoMaterno:'', sexo:'',direccion:'',correo:'',telefono:'',fechaNacimiento:new Date(),estado:''};
+
   @ViewChild('nombreInput') nombreInputRef!: ElementRef;
- 
 
- alumno: Alumno = { idalumno:0,nombre:'',apellidoPaterno:'',apellidoMaterno:'', sexo:'',direccion:'',correo:'',telefono:'',fechaNacimiento:new Date(),estado:''};
-
- ngAfterViewInit() {
-  // Enfocar el campo de nombre automáticamente al cargar el componente
-  this.nombreInputRef.nativeElement.focus();
-}
+  ngAfterViewInit() {
+    // Enfocar el campo de nombre automáticamente al cargar el componente
+    setTimeout(() => {
+      this.nombreInputRef.nativeElement.focus();
+    });
+  }
 
  // Variable para detectar si el formulario ha sido modificado
  formDirty: boolean = false;
